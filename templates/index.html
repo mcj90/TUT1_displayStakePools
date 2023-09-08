@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <title>STAKE POOL LIST</title>
+    </head>
+    
+    <body>
+        <div class="wrapper">
+        <h1>CARDANO STAKE POOLS</h1>
+
+        {% if pool_list %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Pool ID (Bech32)</th>
+                    <th>Ticker</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pool in pool_list %}
+                <tr>
+                    <td><a href="https://cardanoscan.io/pool/{{ pool.pool_id_bech32 }}">{{ pool.pool_id_bech32 }}</a></td>
+                    <td>{{ pool.ticker }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No data available.</p>
+        {% endif %}
+
+    </div>
+    </body>
+</html>
